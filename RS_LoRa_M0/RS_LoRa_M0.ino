@@ -29,6 +29,10 @@
  *                          Move Serial Console from A4 to 12
  *                          Added MCP and SHT sensor support. Not transmitted. Just saved to SD card OBS directory
  *           2024-06-23 RJB Added Copyright
+ *                          Moved #define SD_CONFIG from OP.h to SDC.h
+ *                          Removed #define W4SC true
+ *           2024-11-05 RJB Discovered BMP390 first pressure reading is bad. Added read pressure to bmx_initialize()
+ *                          Bug fixes for 2nd BMP sensor in bmx_initialize() using first sensor data structure
  *                          
  * Time Format: 2022:09:19:19:10:00  YYYY:MM:DD:HR:MN:SS
  * 
@@ -125,7 +129,6 @@
  * So rain observations have a granularity of 15 minutes
  * ======================================================================================================================
  */
-#define W4SC true   // Set true to Wait for Serial Console to be connected
 
 #include <OneWire.h>
 #include <SPI.h>
